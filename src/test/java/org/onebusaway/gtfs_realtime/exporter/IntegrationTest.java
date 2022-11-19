@@ -24,6 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -94,7 +95,7 @@ public class IntegrationTest {
   public void testFullFeed() throws IOException, InterruptedException {
     URL url = getUrl();
 
-    File path = File.createTempFile(getClass().getName() + "-", ".pb");
+    File path = Files.createTempFile(getClass().getName() + "-", ".pb").toFile();
     path.delete();
     path.deleteOnExit();
 

@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -55,8 +56,7 @@ public class GtfsRealtimeFileWriterTest {
     _executor = Mockito.mock(ScheduledExecutorService.class);
     _writer.setExecutor(_executor);
 
-    _path = File.createTempFile(GtfsRealtimeFileWriterTest.class.getName(),
-        "-FeedMessage.pb");
+    _path = Files.createTempFile(GtfsRealtimeFileWriterTest.class.getName(), "-FeedMessage.pb").toFile();
     _path.delete();
     _path.deleteOnExit();
     _writer.setPath(_path);
